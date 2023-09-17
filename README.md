@@ -6,9 +6,8 @@
 <h3 align="center">Astro - Tailwind - AlpineJs - TweenMax</h3>
 
 ```bash
-npm create astro-starter@latest
+npm create atat@latest
 ```
-
 
 # Table of Contents
 - [Table of Contents](#table-of-contents)
