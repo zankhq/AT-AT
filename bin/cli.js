@@ -151,20 +151,6 @@ async function exists(path) {
 }
 
 /**
- * Uninstalls the "inquirer" package from the specified destination directory, if it is installed.
- * @param {string} destination - The path to the directory where the package should be uninstalled from.
- */
-function uninstallInquirerIfNeeded(destination) {
-	if (isPackageInstalled("inquirer", destination)) {
-		console.log("Uninstalling inquirer...");
-		execSync(`${packageManagerCommands[selectedPackageManager].remove} inquirer`, {
-			stdio: "inherit",
-			cwd: destination,
-		});
-	}
-}
-
-/**
  * Deletes a directory and all its contents recursively.
  *
  * @param {string} directoryPath - The path of the directory to delete.
@@ -589,7 +575,7 @@ async function deployToNetlify(packageName, destination) {
 	const content = await fs.readFile(constsFilePath, "utf8");
 	const updatedContent = content.replace(
 		/export const HOSTING_SERVICE: "cloudflare" \| "netlify" \| "none" = "[^"]+";/,
-		`export const HOSTING_SERVICE: "cloudflare" | "netlify" | "none" = "netlify";`,
+		`export const HOSTING_SERVICE: "cloudflare" | "netlify" | "none" = "netlify";`
 	);
 	await fs.writeFile(constsFilePath, updatedContent, "utf8");
 	console.log("Updated HOSTING_SERVICE value to 'netlify' in src/consts.ts");
@@ -752,8 +738,7 @@ async function main() {
 			{
 				type: "confirm",
 				name: "publishProject",
-				message:
-					"Do you want to publish your project to netlify or cloudflare pages now? (if n is chosen you can always do that later manually)",
+				message: "Do you want to publish your project to netlify or cloudflare pages now? (if n is chosen you can always do that later manually)",
 			},
 			{
 				type: "list",
@@ -822,9 +807,6 @@ async function main() {
 		delete packageData.repository;
 		delete packageData.homepage;
 		delete packageData.bugs;
-		if (packageData.dependencies && packageData.dependencies["inquirer"]) {
-			delete packageData.dependencies["inquirer"];
-		}
 		await fs.writeFile(packageJsonPath, JSON.stringify(packageData, null, 2));
 
 		console.log(`Project initialized in ${destination}`);
@@ -863,9 +845,6 @@ async function main() {
 		}
 
 		displayWelcomeMessage(publishProject, publishProjectLocation);
-
-		// It should not be necessary as it should be already been removed previously
-		uninstallInquirerIfNeeded(destination);
 
 		// Ask the user if they want to run the project, but only after the publishing step.
 		const { runProject: shouldRunProject } = await inquirer.prompt([
