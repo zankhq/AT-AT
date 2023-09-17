@@ -3,6 +3,7 @@
 	"type": "module",
 	"version": "0.1.0",
 	"author": "Giulio Zanchetta",
+	"description": "A CLI to create a new project with the AT-AT stack",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
