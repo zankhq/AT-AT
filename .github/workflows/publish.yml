@@ -74,10 +74,10 @@ jobs:
             - name: "Install can-npm-publish"
               run: |
                   pnpm add can-npm-publish --save-dev
-            - name: Setup .npmrc file to authenticate with npm
+            - name: Setup .temp-npmrc file to authenticate with npm
               run: |
-                  echo "//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN }}" > .npmrc
+                  echo "//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN }}" > .temp-npmrc
             - name: "Git status check"
               run: git status
             - name: "Publish package if needed"
-              run: npx can-npm-publish --verbose && pnpm publish --no-git-checks || echo "Does not publish"
+              run: npx can-npm-publish --verbose && pnpm publish --no-git-checks --userconfig .temp-npmrc || echo "Does not publish"
