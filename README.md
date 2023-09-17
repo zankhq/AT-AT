@@ -64,3 +64,11 @@ Astro Discord: https://astro.build/chat
 Tailwind Discord: https://tailwindcss.com/discord
 
 AlpineJS Discord: https://discord.com/invite/CphxBPR
+
+<br/>
+
+---
+<p>
+<span><sub>disclaimer: readme generated with chatgpt</sub></span>
+<span align="right"><a href="https://zank.studio" target="_blank">zank.studio</span>
+</p>
