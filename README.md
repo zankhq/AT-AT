@@ -67,7 +67,8 @@ AlpineJS Discord: https://discord.com/invite/CphxBPR
 
 <br/>
 
+<span><sub><sub>disclaimer: readme generated with chatgpt</sub></sub></span>
+
 ---
 
-<span><sub><sub>disclaimer: readme generated with chatgpt</sub></sub></span>
 <p align="right"><a href="https://zank.studio" target="_blank">zank.studio</p>
