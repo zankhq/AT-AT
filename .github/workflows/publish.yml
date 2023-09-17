@@ -29,8 +29,8 @@ jobs:
                   submodules: "recursive"
             - name: "Initialize and Update Submodules"
               run: |
-                  echo "Initializing and updating submodules"
-                  git submodule foreach git pull origin master
+                  echo "Pulling latest submodules changes"
+                  git submodule foreach git pull origin main
             - name: "cat package.json (before bump)"
               run: cat ./package.json
             - name: "Automated Version Bump"
