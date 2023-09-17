@@ -5,6 +5,8 @@
 
 <h3 align="center">Astro - Tailwind - AlpineJs - TweenMax</h3>
 
+<h4 align="center"><code>npm create astro-starter@latest</code></h4>
+
 
 # Table of Contents
 - [Table of Contents](#table-of-contents)
