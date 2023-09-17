@@ -30,6 +30,9 @@ jobs:
             - name: "Initialize and Update Submodules"
               run: |
                   echo "Pulling latest submodules changes"
+                  git config --global user.name 'Git bot'
+                  git config --global user.email 'bot@noreply.github.com'
+                  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
                   git submodule foreach 'git config pull.rebase false; git pull --allow-unrelated-histories origin main'
             - name: "cat package.json (before bump)"
               run: cat ./package.json
