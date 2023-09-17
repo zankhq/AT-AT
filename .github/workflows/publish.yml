@@ -63,6 +63,11 @@ jobs:
                   cd temp-repo
                   git submodule update --init --recursive
 
+            - name: "Rename .gitignore for npm inclusion"
+              run: |
+                  cd temp-repo/templates/starter
+                  mv .gitignore .gitignore_include
+
             - name: "Download modified files"
               uses: actions/download-artifact@v3
               with:
