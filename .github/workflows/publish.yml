@@ -25,6 +25,11 @@ jobs:
         steps:
             - name: "Checkout source code"
               uses: actions/checkout@v3
+            - name: "Initialize and Update Submodules"
+              run: |
+                  echo "Initializing and updating submodules"
+                  git submodule update --init --remote
+                  git commit -am "Updated submodules to latest commit"
             - name: "cat package.json (before bump)"
               run: cat ./package.json
             - name: "Automated Version Bump"
