@@ -15,9 +15,6 @@
 	"bin": {
 		"create-astro-starter": "./bin/cli.js"
 	},
-	"files": [
-		"*"
-	],
 	"scripts": {
 		"postinstall": "git submodule update --init --recursive"
 	},
