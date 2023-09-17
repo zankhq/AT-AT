@@ -5,7 +5,9 @@
 
 <h3 align="center">Astro - Tailwind - AlpineJs - TweenMax</h3>
 
-<h4 align="center"><code>npm create astro-starter@latest</code></h4>
+```bash
+npm create astro-starter@latest
+```
 
 
 # Table of Contents
