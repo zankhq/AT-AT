@@ -18,7 +18,9 @@
 	"files": [
 		"*"
 	],
-	"scripts": {},
+	"scripts": {
+		"postinstall": "git submodule update --init --recursive"
+	},
 	"dependencies": {
 		"inquirer": "^9.2.11"
 	}
