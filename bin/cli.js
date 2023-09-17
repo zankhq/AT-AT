@@ -575,7 +575,7 @@ async function deployToNetlify(packageName, destination) {
 	const content = await fs.readFile(constsFilePath, "utf8");
 	const updatedContent = content.replace(
 		/export const HOSTING_SERVICE: "cloudflare" \| "netlify" \| "none" = "[^"]+";/,
-		`export const HOSTING_SERVICE: "cloudflare" | "netlify" | "none" = "netlify";`
+		`export const HOSTING_SERVICE: "cloudflare" | "netlify" | "none" = "netlify";`,
 	);
 	await fs.writeFile(constsFilePath, updatedContent, "utf8");
 	console.log("Updated HOSTING_SERVICE value to 'netlify' in src/consts.ts");
