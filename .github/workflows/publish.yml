@@ -30,7 +30,7 @@ jobs:
             - name: "Initialize and Update Submodules"
               run: |
                   echo "Pulling latest submodules changes"
-                  git submodule foreach 'git pull --allow-unrelated-histories origin main'
+                  git submodule foreach 'git config pull.rebase false; git pull --allow-unrelated-histories origin main'
             - name: "cat package.json (before bump)"
               run: cat ./package.json
             - name: "Automated Version Bump"
