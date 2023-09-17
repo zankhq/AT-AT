@@ -51,6 +51,7 @@ jobs:
                   path: |
                       ./package.json
                       ./package-lock.json
+                      ./templates/starter/**
 
     publish-gpr:
         needs: bump-version
