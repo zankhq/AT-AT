@@ -798,6 +798,13 @@ async function main() {
 		// Copy all files and subdirectories from the root directory to the destination
 		await copyRecursive(templateStarterDir, destination);
 
+		// Rename .gitignore_include back to .gitignore
+		const gitignoreIncludePath = path.join(destination, ".gitignore_include");
+		const gitignorePath = path.join(destination, ".gitignore");
+		if (await exists(gitignoreIncludePath)) {
+			await fs.rename(gitignoreIncludePath, gitignorePath);
+		}
+
 		// Update package.json with the new name and author
 		const packageJsonPath = path.join(destination, "package.json");
 		const packageData = JSON.parse(await fs.readFile(packageJsonPath, "utf-8"));
