@@ -25,10 +25,12 @@ jobs:
         steps:
             - name: "Checkout source code"
               uses: actions/checkout@v3
+              with:
+                  submodules: "recursive"
             - name: "Initialize and Update Submodules"
               run: |
                   echo "Initializing and updating submodules"
-                  git submodule update --init --remote
+                  git submodule foreach git pull origin master
                   git commit -am "Updated submodules to latest commit"
             - name: "cat package.json (before bump)"
               run: cat ./package.json
