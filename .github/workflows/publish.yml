@@ -15,10 +15,8 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: 18.x
-            - name: "Install pnpm"
-              run: npm install -g pnpm
             - name: "Check build"
-              run: pnpm install
+              run: npm install
 
     bump-version:
         needs: build
@@ -65,19 +63,13 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: 18.x
-            - name: "Install pnpm"
-              run: |
-                  npm install -g pnpm
-                  pnpm setup
-              env:
-                  SHELL: bash
             - name: "Install can-npm-publish"
               run: |
-                  pnpm add can-npm-publish --save-dev
+                  npm install can-npm-publish --save-dev
             - name: Setup .temp-npmrc file to authenticate with npm
               run: |
                   echo "//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN }}" > .temp-npmrc
             - name: "Git status check"
               run: git status
             - name: "Publish package if needed"
-              run: npx can-npm-publish --verbose && pnpm publish --no-git-checks --userconfig .temp-npmrc || echo "Does not publish"
+              run: npx can-npm-publish --verbose && npm publish --no-git-checks --userconfig .temp-npmrc || echo "Does not publish"
