@@ -1,0 +1,24 @@
+{
+	"name": "create-atat",
+	"type": "module",
+	"version": "0.0.1",
+	"author": "Giulio Zanchetta",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zankhq/AT-AT.git"
+	},
+	"bugs": "https://github.com/zankhq/AT-AT/issues",
+	"homepage": "https://github.com/zankhq/AT-AT",
+	"main": "./bin/cli.js",
+	"bin": {
+		"create-astro-starter": "./bin/cli.js"
+	},
+	"files": [
+		"*"
+	],
+	"scripts": {},
+	"dependencies": {
+		"inquirer": "^9.2.11"
+	}
+}

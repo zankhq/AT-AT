@@ -45,7 +45,7 @@ The AT-AT Stack is designed to offer a complete solution for building modern, pe
 To start building an app using the AT-AT Stack you can start from the [astro-starter](https://github.com/zankhq/astro-starter) template:
 
 ```bash
-npm create astro-starter@latest
+npm create atat@latest
 ```
 
 or you could install each component separately:
