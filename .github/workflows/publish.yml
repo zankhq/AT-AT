@@ -49,27 +49,46 @@ jobs:
     publish-gpr:
         needs: bump-version
         runs-on: ubuntu-latest
-        permissions:
-            packages: write
-            contents: read
         steps:
             - name: "Checkout source code"
               uses: actions/checkout@v3
+
+            # Clone the repository to a temporary directory
+            - name: "Clone repository to temp directory"
+              run: git clone ${{ github.event.repository.clone_url }} temp-repo
+
+            # Initialize and update submodules
+            - name: "Initialize submodules"
+              run: |
+                  cd temp-repo
+                  git submodule update --init --recursive
+
             - name: "Download modified files"
               uses: actions/download-artifact@v3
               with:
                   name: modified-files
+
             - name: "Setup node"
               uses: actions/setup-node@v3
               with:
                   node-version: 18.x
+
             - name: "Install can-npm-publish"
               run: |
+                  cd temp-repo
                   npm install can-npm-publish --save-dev
+
             - name: Setup .temp-npmrc file to authenticate with npm
               run: |
+                  cd temp-repo
                   echo "//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN }}" > .temp-npmrc
+
             - name: "Git status check"
-              run: git status
+              run: |
+                  cd temp-repo
+                  git status
+
             - name: "Publish package if needed"
-              run: npx can-npm-publish --verbose && npm publish --no-git-checks --userconfig .temp-npmrc || echo "Does not publish"
+              run: |
+                  cd temp-repo
+                  npx can-npm-publish --verbose && npm publish --no-git-checks --userconfig .temp-npmrc || echo "Does not publish"
