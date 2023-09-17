@@ -738,7 +738,8 @@ async function main() {
 			{
 				type: "confirm",
 				name: "publishProject",
-				message: "Do you want to publish your project to netlify or cloudflare pages now? (if n is chosen you can always do that later manually)",
+				message:
+					"Do you want to publish your project to netlify or cloudflare pages now? (if n is chosen you can always do that later manually)",
 			},
 			{
 				type: "list",
@@ -790,8 +791,12 @@ async function main() {
 			}
 		}
 
+		// When more templates will be added add choice to pick which one to use
+		// Define the path to the templates/starter folder
+		const templateStarterDir = path.join(rootDir, "templates", "starter");
+
 		// Copy all files and subdirectories from the root directory to the destination
-		await copyRecursive(rootDir, destination);
+		await copyRecursive(templateStarterDir, destination);
 
 		// Update package.json with the new name and author
 		const packageJsonPath = path.join(destination, "package.json");
