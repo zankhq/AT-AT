@@ -52,6 +52,8 @@ After installation, integrate them into your project based on the documentation 
 
 ## Community
 
-Astro Discord: https://astro.build/chat\
-Tailwind Discord: https://tailwindcss.com/discord\
+Astro Discord: https://astro.build/chat
+
+Tailwind Discord: https://tailwindcss.com/discord
+
 AlpineJS Discord: https://discord.com/invite/CphxBPR
