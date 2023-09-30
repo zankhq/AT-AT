@@ -1,7 +1,7 @@
 {
 	"name": "create-atat",
 	"type": "module",
-	"version": "0.3.6",
+	"version": "0.3.7",
 	"author": "Giulio Zanchetta",
 	"description": "A CLI to create a new project with the AT-AT stack",
 	"license": "MIT",
